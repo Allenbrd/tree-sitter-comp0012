@@ -18,11 +18,11 @@ Dice are a custom terminal matched by `/[0-9]+d[0-9]+/`, tokenising strings like
 
 ### Operator Precedence and Shift-Reduce Conflicts
 
-I added seven binary precedence levels, from `or` (1) through `*`/`/`/`%` (7), plus unary `not`/`-` (8). Each uses `prec.left()` for left-associativity. These resolve shift-reduce conflicts in the LR parser:
+I added seven binary precedence levels, from `or` (1) through `*`/`/`/`%` (7), plus unary `not`/`-` (8). Each uses `prec.left()` for left-associativity. These resolve shift-reduce conflicts in the LR parser. When the parser has `1 + 2` on the stack and sees `*` as lookahead, the higher precedence of `*` (7 vs 6) causes a shift rather than a reduce:
 
 ```
-1 + 2 * 3       // * has prec 7 vs + at 6, so parser shifts: 1 + (2 * 3)
-not a and b      // not has prec 8, binds tighter: (not a) and b
+1 + 2 * 3       // shift on *: produces 1 + (2 * 3)
+not a and b      // not at prec 8 binds tighter: (not a) and b
 ```
 
 The `has` keyword is an infix boolean at precedence 3 (same as `==`/`!=`), so `and` at level 2 binds looser:
