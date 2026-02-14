@@ -1,0 +1,41 @@
+==========================
+Dialogue without text
+==========================
+
+say { "yes" => 1 }
+
+---
+
+(source_file
+  (ERROR
+    (ERROR)
+    (string)
+    (num)))
+==========================
+Dialogue choice without arrow
+==========================
+
+say "hi" { "opt" 1 }
+
+---
+
+(source_file
+  (dialogue
+    (string)
+    (ERROR
+      (string)
+      (num))))
+==========================
+Dialogue choice arrow without body
+==========================
+
+say "hi" { "opt" => }
+
+---
+
+(source_file
+  (dialogue
+    (string)
+    (dialogue_choice
+      (string)
+      (MISSING identifier))))

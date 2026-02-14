@@ -1,0 +1,53 @@
+==========================
+Single line comment
+==========================
+
+// The hero enters the dungeon
+
+---
+
+(source_file
+  (comment))
+==========================
+Block comment
+==========================
+
+/* Quest log entry */
+
+---
+
+(source_file
+  (comment))
+==========================
+Multi-line block comment
+==========================
+
+/* 
+  Chapter 1:
+  The Beginning
+*/
+
+---
+
+(source_file
+  (comment))
+==========================
+Comment between statements
+==========================
+
+var hp = 100
+// Take some damage
+hp = hp - 2d6
+
+---
+
+(source_file
+  (assignment
+    (identifier)
+    (num))
+  (comment)
+  (reassignment
+    (identifier)
+    (binary_expression
+      (identifier)
+      (dice))))

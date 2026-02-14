@@ -1,0 +1,35 @@
+==========================
+Empty index brackets
+==========================
+
+inventory[]
+
+---
+
+(source_file
+  (index_expression
+    (identifier)
+    (MISSING identifier)))
+==========================
+Unclosed index bracket
+==========================
+
+inventory[
+
+---
+
+(source_file
+  (identifier)
+  (ERROR))
+==========================
+Unclosed slice
+==========================
+
+inventory[1..
+
+---
+
+(source_file
+  (identifier)
+  (ERROR
+    (num)))

@@ -1,0 +1,156 @@
+==========================
+Simple quest
+==========================
+
+quest "Find the Ring" {
+  print("Quest started")
+}
+
+---
+
+(source_file
+  (quest_declaration
+    (string)
+    (function_call
+      (identifier)
+      (argument_list
+        (string)))))
+==========================
+Quest with phases
+==========================
+
+quest "Slay the Dragon" {
+  phase "Gather Allies" {
+    give "map" to player
+    print("Allies gathered")
+  }
+  phase "Storm the Castle" {
+    strike dragon with 2d6 + 5
+  }
+}
+
+---
+
+(source_file
+  (quest_declaration
+    (string)
+    (phase
+      (string)
+      (give_statement
+        (string)
+        (identifier))
+      (function_call
+        (identifier)
+        (argument_list
+          (string))))
+    (phase
+      (string)
+      (strike_statement
+        (identifier)
+        (binary_expression
+          (dice)
+          (num))))))
+==========================
+Quest with control flow
+==========================
+
+quest "Rescue Princess" {
+  phase "Infiltrate" {
+    if guard has "key" {
+      take "key" from guard
+    }
+  }
+  phase "Escape" {
+    while danger > 0 {
+      flee()
+    }
+  }
+}
+
+---
+
+(source_file
+  (quest_declaration
+    (string)
+    (phase
+      (string)
+      (if_statement
+        (has_expression
+          (identifier)
+          (string))
+        (block
+          (take_statement
+            (string)
+            (identifier)))))
+    (phase
+      (string)
+      (while_statement
+        (binary_expression
+          (identifier)
+          (num))
+        (block
+          (function_call
+            (identifier)
+            (argument_list)))))))
+==========================
+Encounter with spawn
+==========================
+
+encounter "Ambush" {
+  spawn "Goblin" with { hp: 15, attack: 1d4 }
+  spawn "Goblin Chief" with { hp: 30, attack: 2d6 }
+}
+
+---
+
+(source_file
+  (encounter_block
+    (string)
+    (spawn_statement
+      (string)
+      (stat_block
+        (stat_entry
+          (identifier)
+          (num))
+        (stat_entry
+          (identifier)
+          (dice))))
+    (spawn_statement
+      (string)
+      (stat_block
+        (stat_entry
+          (identifier)
+          (num))
+        (stat_entry
+          (identifier)
+          (dice))))))
+==========================
+Encounter with strike
+==========================
+
+encounter "Boss Fight" {
+  spawn "Lich" with { hp: 200, attack: 3d8 + 5 }
+  strike lich with 2d6 + strength
+}
+
+---
+
+(source_file
+  (encounter_block
+    (string)
+    (spawn_statement
+      (string)
+      (stat_block
+        (stat_entry
+          (identifier)
+          (num))
+        (stat_entry
+          (identifier)
+          (binary_expression
+            (dice)
+            (num)))))
+    (strike_statement
+      (identifier)
+      (binary_expression
+        (dice)
+        (identifier)))))

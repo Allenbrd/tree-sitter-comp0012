@@ -1,0 +1,177 @@
+==========================
+Simple if
+==========================
+
+if hp > 0 { print("Alive!") }
+
+---
+
+(source_file
+  (if_statement
+    (binary_expression
+      (identifier)
+      (num))
+    (block
+      (function_call
+        (identifier)
+        (argument_list
+          (string))))))
+==========================
+If-else
+==========================
+
+if hp > 0 { print("Alive") } else { print("Dead") }
+
+---
+
+(source_file
+  (if_statement
+    (binary_expression
+      (identifier)
+      (num))
+    (block
+      (function_call
+        (identifier)
+        (argument_list
+          (string))))
+    (block
+      (function_call
+        (identifier)
+        (argument_list
+          (string))))))
+==========================
+If-else if-else chain
+==========================
+
+if hp > 50 { print("Healthy") } else if hp > 0 { print("Wounded") } else { print("Dead") }
+
+---
+
+(source_file
+  (if_statement
+    (binary_expression
+      (identifier)
+      (num))
+    (block
+      (function_call
+        (identifier)
+        (argument_list
+          (string))))
+    (if_statement
+      (binary_expression
+        (identifier)
+        (num))
+      (block
+        (function_call
+          (identifier)
+          (argument_list
+            (string))))
+      (block
+        (function_call
+          (identifier)
+          (argument_list
+            (string)))))))
+==========================
+While loop
+==========================
+
+while enemies > 0 { swing(target) }
+
+---
+
+(source_file
+  (while_statement
+    (binary_expression
+      (identifier)
+      (num))
+    (block
+      (function_call
+        (identifier)
+        (argument_list
+          (identifier))))))
+==========================
+For-in with range
+==========================
+
+for round in 1..10 { roll(1d20) }
+
+---
+
+(source_file
+  (for_in_statement
+    (identifier)
+    (binary_expression
+      (num)
+      (num))
+    (block
+      (function_call
+        (identifier)
+        (argument_list
+          (dice))))))
+==========================
+For-in with array
+==========================
+
+for item in loot { give item to player }
+
+---
+
+(source_file
+  (for_in_statement
+    (identifier)
+    (identifier)
+    (block
+      (give_statement
+        (identifier)
+        (identifier)))))
+==========================
+Nested loops
+==========================
+
+for i in 0..3 {
+  while hp > 0 {
+    swing(enemy)
+  }
+}
+
+---
+
+(source_file
+  (for_in_statement
+    (identifier)
+    (binary_expression
+      (num)
+      (num))
+    (block
+      (while_statement
+        (binary_expression
+          (identifier)
+          (num))
+        (block
+          (function_call
+            (identifier)
+            (argument_list
+              (identifier))))))))
+==========================
+Return with value
+==========================
+
+return 2d6 + 5
+
+---
+
+(source_file
+  (return_statement
+    (binary_expression
+      (dice)
+      (num))))
+==========================
+Return without value
+==========================
+
+return
+
+---
+
+(source_file
+  (return_statement))

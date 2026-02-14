@@ -1,0 +1,426 @@
+==========================
+Integer literal
+==========================
+
+42
+
+---
+
+(source_file
+  (num))
+==========================
+Decimal number
+==========================
+
+3.14
+
+---
+
+(source_file
+  (num))
+==========================
+String literal
+==========================
+
+"hello world"
+
+---
+
+(source_file
+  (string))
+==========================
+Boolean literals
+==========================
+
+true
+false
+
+---
+
+(source_file
+  (bool)
+  (bool))
+==========================
+Addition
+==========================
+
+1 + 2
+
+---
+
+(source_file
+  (binary_expression
+    (num)
+    (num)))
+==========================
+Subtraction
+==========================
+
+10 - 3
+
+---
+
+(source_file
+  (binary_expression
+    (num)
+    (num)))
+==========================
+Multiplication
+==========================
+
+4 * 5
+
+---
+
+(source_file
+  (binary_expression
+    (num)
+    (num)))
+==========================
+Division
+==========================
+
+20 / 4
+
+---
+
+(source_file
+  (binary_expression
+    (num)
+    (num)))
+==========================
+Modulo
+==========================
+
+10 % 3
+
+---
+
+(source_file
+  (binary_expression
+    (num)
+    (num)))
+==========================
+Operator precedence: multiplication binds tighter than addition
+==========================
+
+1 + 2 * 3
+
+---
+
+(source_file
+  (binary_expression
+    (num)
+    (binary_expression
+      (num)
+      (num))))
+==========================
+Operator precedence: division binds tighter than subtraction
+==========================
+
+10 - 6 / 2
+
+---
+
+(source_file
+  (binary_expression
+    (num)
+    (binary_expression
+      (num)
+      (num))))
+==========================
+Chained arithmetic
+==========================
+
+a + b * c - d / e % f
+
+---
+
+(source_file
+  (binary_expression
+    (binary_expression
+      (identifier)
+      (binary_expression
+        (identifier)
+        (identifier)))
+    (binary_expression
+      (binary_expression
+        (identifier)
+        (identifier))
+      (identifier))))
+==========================
+Less than
+==========================
+
+hp < 50
+
+---
+
+(source_file
+  (binary_expression
+    (identifier)
+    (num)))
+==========================
+Greater than
+==========================
+
+hp > 0
+
+---
+
+(source_file
+  (binary_expression
+    (identifier)
+    (num)))
+==========================
+Less than or equal
+==========================
+
+level <= 10
+
+---
+
+(source_file
+  (binary_expression
+    (identifier)
+    (num)))
+==========================
+Greater than or equal
+==========================
+
+armor >= 15
+
+---
+
+(source_file
+  (binary_expression
+    (identifier)
+    (num)))
+==========================
+Equality
+==========================
+
+name == "hero"
+
+---
+
+(source_file
+  (binary_expression
+    (identifier)
+    (string)))
+==========================
+Inequality
+==========================
+
+class != "mage"
+
+---
+
+(source_file
+  (binary_expression
+    (identifier)
+    (string)))
+==========================
+Logical AND
+==========================
+
+alive and hp > 0
+
+---
+
+(source_file
+  (binary_expression
+    (identifier)
+    (binary_expression
+      (identifier)
+      (num))))
+==========================
+Logical OR
+==========================
+
+fleeing or stunned
+
+---
+
+(source_file
+  (binary_expression
+    (identifier)
+    (identifier)))
+==========================
+Logical NOT
+==========================
+
+not dead
+
+---
+
+(source_file
+  (unary_expression
+    (identifier)))
+==========================
+Logical precedence: NOT binds tighter than AND
+==========================
+
+not a and b
+
+---
+
+(source_file
+  (binary_expression
+    (unary_expression
+      (identifier))
+    (identifier)))
+==========================
+Logical precedence: AND binds tighter than OR
+==========================
+
+a and b or c
+
+---
+
+(source_file
+  (binary_expression
+    (binary_expression
+      (identifier)
+      (identifier))
+    (identifier)))
+==========================
+Unary negation
+==========================
+
+-5
+
+---
+
+(source_file
+  (unary_expression
+    (num)))
+==========================
+Grouped expression overriding precedence
+==========================
+
+(attack + bonus) * 2
+
+---
+
+(source_file
+  (binary_expression
+    (grouped_expression
+      (binary_expression
+        (identifier)
+        (identifier)))
+    (num)))
+==========================
+Range expression
+==========================
+
+1..10
+
+---
+
+(source_file
+  (binary_expression
+    (num)
+    (num)))
+==========================
+Array literal
+==========================
+
+[1, 2, 3]
+
+---
+
+(source_file
+  (array_expression
+    (num)
+    (num)
+    (num)))
+==========================
+Empty array
+==========================
+
+[]
+
+---
+
+(source_file
+  (array_expression))
+==========================
+Array of strings
+==========================
+
+["sword", "shield", "potion"]
+
+---
+
+(source_file
+  (array_expression
+    (string)
+    (string)
+    (string)))
+==========================
+Array indexing
+==========================
+
+inventory[0]
+
+---
+
+(source_file
+  (index_expression
+    (identifier)
+    (num)))
+==========================
+Nested arrays
+==========================
+
+[[1, 2], [3, 4]]
+
+---
+
+(source_file
+  (array_expression
+    (array_expression
+      (num)
+      (num))
+    (array_expression
+      (num)
+      (num))))
+==========================
+Index with expression
+==========================
+
+loot[i + 1]
+
+---
+
+(source_file
+  (index_expression
+    (identifier)
+    (binary_expression
+      (identifier)
+      (num))))
+==========================
+Chained indexing
+==========================
+
+grid[0][1]
+
+---
+
+(source_file
+  (index_expression
+    (index_expression
+      (identifier)
+      (num))
+    (num)))
+==========================
+Empty string
+==========================
+
+""
+
+---
+
+(source_file
+  (string))

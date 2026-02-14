@@ -1,0 +1,98 @@
+==========================
+Function call
+==========================
+
+print("Hello adventurer!")
+
+---
+
+(source_file
+  (function_call
+    (identifier)
+    (argument_list
+      (string))))
+==========================
+Function call no args
+==========================
+
+rest()
+
+---
+
+(source_file
+  (function_call
+    (identifier)
+    (argument_list)))
+==========================
+Function call with dice
+==========================
+
+roll(1d20 + 5)
+
+---
+
+(source_file
+  (function_call
+    (identifier)
+    (argument_list
+      (binary_expression
+        (dice)
+        (num)))))
+==========================
+Method call
+==========================
+
+player.heal(20)
+
+---
+
+(source_file
+  (method_call
+    (identifier)
+    (identifier)
+    (argument_list
+      (num))))
+==========================
+Method call no args
+==========================
+
+sword.equip()
+
+---
+
+(source_file
+  (method_call
+    (identifier)
+    (identifier)
+    (argument_list)))
+==========================
+Chained method calls
+==========================
+
+player.inventory().count()
+
+---
+
+(source_file
+  (method_call
+    (method_call
+      (identifier)
+      (identifier)
+      (argument_list))
+    (identifier)
+    (argument_list)))
+==========================
+Method with multiple args
+==========================
+
+map.moveTo(3, 7)
+
+---
+
+(source_file
+  (method_call
+    (identifier)
+    (identifier)
+    (argument_list
+      (num)
+      (num))))

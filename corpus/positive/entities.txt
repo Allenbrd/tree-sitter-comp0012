@@ -1,0 +1,157 @@
+==========================
+Hero with stats
+==========================
+
+hero "Gandalf" { hp: 100, attack: 3d6 + 2, mana: 50 }
+
+---
+
+(source_file
+  (hero_declaration
+    (string)
+    (stat_block
+      (stat_entry
+        (identifier)
+        (num))
+      (stat_entry
+        (identifier)
+        (binary_expression
+          (dice)
+          (num)))
+      (stat_entry
+        (identifier)
+        (num)))))
+==========================
+Hero with minimal stats
+==========================
+
+hero "Peasant" { hp: 10 }
+
+---
+
+(source_file
+  (hero_declaration
+    (string)
+    (stat_block
+      (stat_entry
+        (identifier)
+        (num)))))
+==========================
+Enemy with dice stats
+==========================
+
+enemy "Dragon" { hp: 500, attack: 4d8, armor: 18 }
+
+---
+
+(source_file
+  (enemy_declaration
+    (string)
+    (stat_block
+      (stat_entry
+        (identifier)
+        (num))
+      (stat_entry
+        (identifier)
+        (dice))
+      (stat_entry
+        (identifier)
+        (num)))))
+==========================
+Enemy with simple stats
+==========================
+
+enemy "Goblin" { hp: 15, attack: 1d4 }
+
+---
+
+(source_file
+  (enemy_declaration
+    (string)
+    (stat_block
+      (stat_entry
+        (identifier)
+        (num))
+      (stat_entry
+        (identifier)
+        (dice)))))
+==========================
+Item with damage and rarity
+==========================
+
+item "Excalibur" { damage: 2d12 + 5, rarity: "legendary" }
+
+---
+
+(source_file
+  (item_declaration
+    (string)
+    (stat_block
+      (stat_entry
+        (identifier)
+        (binary_expression
+          (dice)
+          (num)))
+      (stat_entry
+        (identifier)
+        (string)))))
+==========================
+Item with boolean property
+==========================
+
+item "Healing Potion" { healing: 2d4 + 2, consumable: true }
+
+---
+
+(source_file
+  (item_declaration
+    (string)
+    (stat_block
+      (stat_entry
+        (identifier)
+        (binary_expression
+          (dice)
+          (num)))
+      (stat_entry
+        (identifier)
+        (bool)))))
+==========================
+Entity with trailing comma
+==========================
+
+hero "Elf" { hp: 80, dex: 18, }
+
+---
+
+(source_file
+  (hero_declaration
+    (string)
+    (stat_block
+      (stat_entry
+        (identifier)
+        (num))
+      (stat_entry
+        (identifier)
+        (num)))))
+==========================
+Entity with expressions in stats
+==========================
+
+enemy "Boss" { hp: 100 + 50, attack: 3d6 + level }
+
+---
+
+(source_file
+  (enemy_declaration
+    (string)
+    (stat_block
+      (stat_entry
+        (identifier)
+        (binary_expression
+          (num)
+          (num)))
+      (stat_entry
+        (identifier)
+        (binary_expression
+          (dice)
+          (identifier))))))

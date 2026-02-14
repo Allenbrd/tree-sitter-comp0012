@@ -1,0 +1,111 @@
+==========================
+Simple skill check
+==========================
+
+check wisdom vs 15 {
+  success => print("You sense a trap"),
+  failure => print("You walk into the trap"),
+}
+
+---
+
+(source_file
+  (skill_check
+    (identifier)
+    (num)
+    (check_success
+      (function_call
+        (identifier)
+        (argument_list
+          (string))))
+    (check_failure
+      (function_call
+        (identifier)
+        (argument_list
+          (string))))))
+==========================
+Skill check with dice difficulty
+==========================
+
+check strength vs 2d6 + 5 {
+  success => print("Door smashed open"),
+  failure => print("The door holds firm"),
+}
+
+---
+
+(source_file
+  (skill_check
+    (identifier)
+    (binary_expression
+      (dice)
+      (num))
+    (check_success
+      (function_call
+        (identifier)
+        (argument_list
+          (string))))
+    (check_failure
+      (function_call
+        (identifier)
+        (argument_list
+          (string))))))
+==========================
+Skill check with variable
+==========================
+
+check perception vs trap_dc {
+  success => {
+    print("Trap found!")
+    var bonus = 10
+  },
+  failure => print("Nothing here"),
+}
+
+---
+
+(source_file
+  (skill_check
+    (identifier)
+    (identifier)
+    (check_success
+      (block
+        (function_call
+          (identifier)
+          (argument_list
+            (string)))
+        (assignment
+          (identifier)
+          (num))))
+    (check_failure
+      (function_call
+        (identifier)
+        (argument_list
+          (string))))))
+==========================
+Skill check with expression
+==========================
+
+check dexterity + 3 vs 18 {
+  success => dodge(fireball),
+  failure => take_damage(3d6),
+}
+
+---
+
+(source_file
+  (skill_check
+    (binary_expression
+      (identifier)
+      (num))
+    (num)
+    (check_success
+      (function_call
+        (identifier)
+        (argument_list
+          (identifier))))
+    (check_failure
+      (function_call
+        (identifier)
+        (argument_list
+          (dice))))))

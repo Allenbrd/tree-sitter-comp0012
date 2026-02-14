@@ -1,0 +1,53 @@
+==========================
+Lambda without parameter list
+==========================
+
+fn { x + y }
+
+---
+
+(source_file
+  (ERROR)
+  (block
+    (binary_expression
+      (identifier)
+      (identifier))))
+==========================
+Arrow lambda without body
+==========================
+
+fn(x) =>
+
+---
+
+(source_file
+  (lambda_expression
+    (parameter_list
+      (identifier))
+    (MISSING identifier)))
+==========================
+Lambda with trailing comma in params
+==========================
+
+fn(x, ) => x
+
+---
+
+(source_file
+  (lambda_expression
+    (parameter_list
+      (identifier)
+      (ERROR))
+    (identifier)))
+==========================
+Lambda without parentheses on params
+==========================
+
+fn x => x
+
+---
+
+(source_file
+  (ERROR
+    (identifier)
+    (identifier)))

@@ -1,0 +1,144 @@
+==========================
+Simple function definition
+==========================
+
+fn greet(name) { print(name) }
+
+---
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (block
+      (function_call
+        (identifier)
+        (argument_list
+          (identifier))))))
+==========================
+Function with multiple params
+==========================
+
+fn add(a, b) { return a + b }
+
+---
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameter_list
+      (identifier)
+      (identifier))
+    (block
+      (return_statement
+        (binary_expression
+          (identifier)
+          (identifier))))))
+==========================
+Function with no params
+==========================
+
+fn rest() { return 2d4 + 2 }
+
+---
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameter_list)
+    (block
+      (return_statement
+        (binary_expression
+          (dice)
+          (num))))))
+==========================
+Function with dice in body
+==========================
+
+fn roll_attack(bonus) { return 2d6 + bonus }
+
+---
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (block
+      (return_statement
+        (binary_expression
+          (dice)
+          (identifier))))))
+==========================
+Function with control flow
+==========================
+
+fn is_alive(hp) {
+  if hp > 0 {
+    return true
+  } else {
+    return false
+  }
+}
+
+---
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameter_list
+      (identifier))
+    (block
+      (if_statement
+        (binary_expression
+          (identifier)
+          (num))
+        (block
+          (return_statement
+            (bool)))
+        (block
+          (return_statement
+            (bool)))))))
+==========================
+Function with inventory operation
+==========================
+
+fn equip(player, weapon) {
+  give weapon to player
+}
+
+---
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameter_list
+      (identifier)
+      (identifier))
+    (block
+      (give_statement
+        (identifier)
+        (identifier)))))
+==========================
+Function inside quest
+==========================
+
+quest "Tutorial" {
+  fn heal(target) { return 2d4 + 2 }
+}
+
+---
+
+(source_file
+  (quest_declaration
+    (string)
+    (function_definition
+      (identifier)
+      (parameter_list
+        (identifier))
+      (block
+        (return_statement
+          (binary_expression
+            (dice)
+            (num)))))))

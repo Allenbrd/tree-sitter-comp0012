@@ -1,0 +1,94 @@
+==========================
+Assign number
+==========================
+
+var level = 1
+
+---
+
+(source_file
+  (assignment
+    (identifier)
+    (num)))
+==========================
+Assign string
+==========================
+
+var name = "Aragorn"
+
+---
+
+(source_file
+  (assignment
+    (identifier)
+    (string)))
+==========================
+Assign boolean
+==========================
+
+var alive = true
+
+---
+
+(source_file
+  (assignment
+    (identifier)
+    (bool)))
+==========================
+Assign dice expression
+==========================
+
+var damage = 2d6 + 5
+
+---
+
+(source_file
+  (assignment
+    (identifier)
+    (binary_expression
+      (dice)
+      (num))))
+==========================
+Assign array
+==========================
+
+var inventory = ["sword", "shield", "potion"]
+
+---
+
+(source_file
+  (assignment
+    (identifier)
+    (array_expression
+      (string)
+      (string)
+      (string))))
+==========================
+Reassignment
+==========================
+
+hp = hp - damage
+
+---
+
+(source_file
+  (reassignment
+    (identifier)
+    (binary_expression
+      (identifier)
+      (identifier))))
+==========================
+Assign from function call
+==========================
+
+var result = roll(1d20)
+
+---
+
+(source_file
+  (assignment
+    (identifier)
+    (function_call
+      (identifier)
+      (argument_list
+        (dice)))))

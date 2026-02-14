@@ -1,0 +1,155 @@
+==========================
+Lambda with block body
+==========================
+
+fn(x, y) { x + y }
+
+---
+
+(source_file
+  (lambda_expression
+    (parameter_list
+      (identifier)
+      (identifier))
+    (block
+      (binary_expression
+        (identifier)
+        (identifier)))))
+==========================
+Lambda with arrow body
+==========================
+
+fn(x) => x + 1
+
+---
+
+(source_file
+  (lambda_expression
+    (parameter_list
+      (identifier))
+    (binary_expression
+      (identifier)
+      (num))))
+==========================
+Lambda with no parameters
+==========================
+
+fn() { print("hello") }
+
+---
+
+(source_file
+  (lambda_expression
+    (parameter_list)
+    (block
+      (function_call
+        (identifier)
+        (argument_list
+          (string))))))
+==========================
+Lambda assigned to variable
+==========================
+
+var double = fn(x) => x * 2
+
+---
+
+(source_file
+  (assignment
+    (identifier)
+    (lambda_expression
+      (parameter_list
+        (identifier))
+      (binary_expression
+        (identifier)
+        (num)))))
+==========================
+Lambda with complex block body
+==========================
+
+var clamp = fn(val, lo, hi) {
+  if val < lo { return lo }
+  if val > hi { return hi }
+  return val
+}
+
+---
+
+(source_file
+  (assignment
+    (identifier)
+    (lambda_expression
+      (parameter_list
+        (identifier)
+        (identifier)
+        (identifier))
+      (block
+        (if_statement
+          (binary_expression
+            (identifier)
+            (identifier))
+          (block
+            (return_statement
+              (identifier))))
+        (if_statement
+          (binary_expression
+            (identifier)
+            (identifier))
+          (block
+            (return_statement
+              (identifier))))
+        (return_statement
+          (identifier))))))
+==========================
+Arrow lambda greedy body captures full expression
+==========================
+
+fn(x) => x * 2 + 1
+
+---
+
+(source_file
+  (lambda_expression
+    (parameter_list
+      (identifier))
+    (binary_expression
+      (binary_expression
+        (identifier)
+        (num))
+      (num))))
+==========================
+Lambda passed as argument
+==========================
+
+map(items, fn(x) => x * 2)
+
+---
+
+(source_file
+  (function_call
+    (identifier)
+    (argument_list
+      (identifier)
+      (lambda_expression
+        (parameter_list
+          (identifier))
+        (binary_expression
+          (identifier)
+          (num))))))
+==========================
+Lambda with dice in body
+==========================
+
+var roller = fn(sides) => 1d20 + sides
+
+---
+
+(source_file
+  (assignment
+    (identifier)
+    (lambda_expression
+      (parameter_list
+        (identifier))
+      (binary_expression
+        (dice)
+        (identifier)))))

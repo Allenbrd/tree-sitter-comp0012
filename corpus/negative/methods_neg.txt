@@ -1,0 +1,66 @@
+==========================
+Method call with no name after dot
+==========================
+
+obj.(1)
+
+---
+
+(source_file
+  (function_call
+    (identifier)
+    (ERROR)
+    (argument_list
+      (num))))
+==========================
+Method call missing everything after dot
+==========================
+
+obj.
+
+---
+
+(source_file
+  (identifier)
+  (ERROR))
+==========================
+Dot without receiver
+==========================
+
+.method()
+
+---
+
+(source_file
+  (ERROR)
+  (function_call
+    (identifier)
+    (argument_list)))
+==========================
+Function call with trailing comma
+==========================
+
+func(1,)
+
+---
+
+(source_file
+  (function_call
+    (identifier)
+    (argument_list
+      (num)
+      (ERROR))))
+==========================
+Function call with leading comma
+==========================
+
+func(,1)
+
+---
+
+(source_file
+  (function_call
+    (identifier)
+    (argument_list
+      (ERROR)
+      (num))))

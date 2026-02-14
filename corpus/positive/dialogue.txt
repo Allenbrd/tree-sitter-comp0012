@@ -1,0 +1,124 @@
+==========================
+Simple dialogue with two choices
+==========================
+
+say "Who goes there?" {
+  "Friend" => print("Welcome!"),
+  "Foe" => print("Draw your sword!"),
+}
+
+---
+
+(source_file
+  (dialogue
+    (string)
+    (dialogue_choice
+      (string)
+      (function_call
+        (identifier)
+        (argument_list
+          (string))))
+    (dialogue_choice
+      (string)
+      (function_call
+        (identifier)
+        (argument_list
+          (string))))))
+==========================
+Dialogue with block bodies
+==========================
+
+say "What will you do?" {
+  "Fight" => {
+    swing(enemy)
+    print("Battle begins!")
+  },
+  "Flee" => {
+    print("You ran away!")
+  },
+}
+
+---
+
+(source_file
+  (dialogue
+    (string)
+    (dialogue_choice
+      (string)
+      (block
+        (function_call
+          (identifier)
+          (argument_list
+            (identifier)))
+        (function_call
+          (identifier)
+          (argument_list
+            (string)))))
+    (dialogue_choice
+      (string)
+      (block
+        (function_call
+          (identifier)
+          (argument_list
+            (string)))))))
+==========================
+Dialogue with three choices
+==========================
+
+say "Choose your path" {
+  "Left" => print("You go left"),
+  "Right" => print("You go right"),
+  "Back" => print("You turn back"),
+}
+
+---
+
+(source_file
+  (dialogue
+    (string)
+    (dialogue_choice
+      (string)
+      (function_call
+        (identifier)
+        (argument_list
+          (string))))
+    (dialogue_choice
+      (string)
+      (function_call
+        (identifier)
+        (argument_list
+          (string))))
+    (dialogue_choice
+      (string)
+      (function_call
+        (identifier)
+        (argument_list
+          (string))))))
+==========================
+Dialogue with statement in block body
+==========================
+
+say "Buy a potion?" {
+  "Yes" => {
+    give "potion" to player
+  },
+  "No" => print("Maybe next time"),
+}
+
+---
+
+(source_file
+  (dialogue
+    (string)
+    (dialogue_choice
+      (string)
+      (block
+        (give_statement
+          (string)
+          (identifier))))
+    (dialogue_choice
+      (string)
+      (function_call
+        (identifier)
+        (argument_list
+          (string))))))

@@ -1,0 +1,75 @@
+==========================
+Check without skill expression
+==========================
+
+check vs 15 { success => 1, failure => 0 }
+
+---
+
+(source_file
+  (ERROR
+    (identifier)
+    (num))
+  (block
+    (binary_expression
+      (identifier)
+      (ERROR)
+      (num))
+    (ERROR)
+    (num)))
+==========================
+Check without difficulty
+==========================
+
+check str vs { success => 1, failure => 0 }
+
+---
+
+(source_file
+  (skill_check
+    (identifier)
+    (MISSING identifier)
+    (check_success
+      (num))
+    (check_failure
+      (num))))
+==========================
+Check missing failure arm
+==========================
+
+check str vs 15 { success => 1 }
+
+---
+
+(source_file
+  (ERROR
+    (identifier)
+    (num)
+    (check_success
+      (num))))
+==========================
+Check missing success arm
+==========================
+
+check str vs 15 { failure => 1 }
+
+---
+
+(source_file
+  (ERROR
+    (identifier)
+    (num)
+    (identifier)
+    (num)))
+==========================
+Check with empty body
+==========================
+
+check str vs 15 { }
+
+---
+
+(source_file
+  (ERROR
+    (identifier)
+    (num)))

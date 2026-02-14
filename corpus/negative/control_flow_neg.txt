@@ -1,0 +1,60 @@
+==========================
+If without condition
+==========================
+
+if { }
+
+---
+
+(source_file
+  (ERROR)
+  (block))
+==========================
+If without body block
+==========================
+
+if x > 0
+
+---
+
+(source_file
+  (ERROR
+    (binary_expression
+      (identifier)
+      (num))))
+==========================
+While without condition
+==========================
+
+while { }
+
+---
+
+(source_file
+  (ERROR)
+  (block))
+==========================
+For without iterator variable
+==========================
+
+for in items { }
+
+---
+
+(source_file
+  (ERROR
+    (identifier)
+    (identifier))
+  (block))
+==========================
+For without in keyword
+==========================
+
+for x { }
+
+---
+
+(source_file
+  (ERROR
+    (identifier))
+  (block))

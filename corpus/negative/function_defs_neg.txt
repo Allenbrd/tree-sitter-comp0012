@@ -1,0 +1,35 @@
+==========================
+Function definition without name or params
+==========================
+
+fn { }
+
+---
+
+(source_file
+  (ERROR)
+  (block))
+==========================
+Function definition without parameter list
+==========================
+
+fn greet { }
+
+---
+
+(source_file
+  (ERROR
+    (identifier))
+  (block))
+==========================
+Function definition without body
+==========================
+
+fn greet()
+
+---
+
+(source_file
+  (ERROR
+    (identifier)
+    (parameter_list)))

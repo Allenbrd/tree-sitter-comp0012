@@ -1,0 +1,84 @@
+==========================
+Simple dice roll
+==========================
+
+2d6
+
+---
+
+(source_file
+  (dice))
+==========================
+Twenty-sided die
+==========================
+
+1d20
+
+---
+
+(source_file
+  (dice))
+==========================
+Dice with modifier
+==========================
+
+2d6 + 3
+
+---
+
+(source_file
+  (binary_expression
+    (dice)
+    (num)))
+==========================
+Dice with negative modifier
+==========================
+
+1d20 - 2
+
+---
+
+(source_file
+  (binary_expression
+    (dice)
+    (num)))
+==========================
+Dice in comparison
+==========================
+
+3d8 + 2 > 15
+
+---
+
+(source_file
+  (binary_expression
+    (binary_expression
+      (dice)
+      (num))
+    (num)))
+==========================
+Dice in arithmetic
+==========================
+
+2d6 + 1d4
+
+---
+
+(source_file
+  (binary_expression
+    (dice)
+    (dice)))
+==========================
+Dice assigned to variable
+==========================
+
+var damage = 2d6 + 5
+
+---
+
+(source_file
+  (assignment
+    (identifier)
+    (binary_expression
+      (dice)
+      (num))))

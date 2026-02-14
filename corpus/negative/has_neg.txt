@@ -1,0 +1,24 @@
+==========================
+Has without right operand
+==========================
+
+player has
+
+---
+
+(source_file
+  (has_expression
+    (identifier)
+    (MISSING identifier)))
+==========================
+Has without right operand with semicolon context
+==========================
+
+x has
+
+---
+
+(source_file
+  (has_expression
+    (identifier)
+    (MISSING identifier)))

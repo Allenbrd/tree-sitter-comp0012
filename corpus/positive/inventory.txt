@@ -1,0 +1,94 @@
+==========================
+Give item to character
+==========================
+
+give "sword" to player
+
+---
+
+(source_file
+  (give_statement
+    (string)
+    (identifier)))
+==========================
+Give expression to target
+==========================
+
+give "healing potion" to wizard
+
+---
+
+(source_file
+  (give_statement
+    (string)
+    (identifier)))
+==========================
+Take item from container
+==========================
+
+take "gold" from chest
+
+---
+
+(source_file
+  (take_statement
+    (string)
+    (identifier)))
+==========================
+Take item from enemy
+==========================
+
+take "key" from goblin
+
+---
+
+(source_file
+  (take_statement
+    (string)
+    (identifier)))
+==========================
+Has check
+==========================
+
+player has "shield"
+
+---
+
+(source_file
+  (has_expression
+    (identifier)
+    (string)))
+==========================
+Has check in condition
+==========================
+
+if player has "key" { print("Door opens") }
+
+---
+
+(source_file
+  (if_statement
+    (has_expression
+      (identifier)
+      (string))
+    (block
+      (function_call
+        (identifier)
+        (argument_list
+          (string))))))
+==========================
+Has check with and
+==========================
+
+player has "sword" and player has "shield"
+
+---
+
+(source_file
+  (binary_expression
+    (has_expression
+      (identifier)
+      (string))
+    (has_expression
+      (identifier)
+      (string))))

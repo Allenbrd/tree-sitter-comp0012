@@ -1,0 +1,94 @@
+==========================
+Trailing binary operator
+==========================
+
+1 +
+
+---
+
+(source_file
+  (binary_expression
+    (num)
+    (MISSING identifier)))
+==========================
+Leading binary operator
+==========================
+
+* 5
+
+---
+
+(source_file
+  (ERROR)
+  (num))
+==========================
+Double operator
+==========================
+
+1 + + 2
+
+---
+
+(source_file
+  (binary_expression
+    (num)
+    (ERROR)
+    (num)))
+==========================
+Assignment without variable name
+==========================
+
+var = 5
+
+---
+
+(source_file
+  (ERROR)
+  (num))
+==========================
+Assignment without value
+==========================
+
+var x
+
+---
+
+(source_file
+  (ERROR
+    (identifier)))
+==========================
+Unclosed array literal
+==========================
+
+[1, 2,
+
+---
+
+(ERROR
+  (num)
+  (num))
+==========================
+Array elements without commas
+==========================
+
+[1 2 3]
+
+---
+
+(source_file
+  (array_expression
+    (ERROR
+      (num)
+      (num))
+    (num)))
+==========================
+Unclosed index bracket
+==========================
+
+arr[
+
+---
+
+(source_file
+  (identifier)
+  (ERROR))

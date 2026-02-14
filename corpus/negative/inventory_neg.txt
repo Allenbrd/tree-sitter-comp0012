@@ -1,0 +1,69 @@
+==========================
+Give without item
+==========================
+
+give to player
+
+---
+
+(source_file
+  (ERROR
+    (identifier)
+    (identifier)))
+==========================
+Give without target
+==========================
+
+give "sword"
+
+---
+
+(source_file
+  (ERROR
+    (string)))
+==========================
+Take without item
+==========================
+
+take from chest
+
+---
+
+(source_file
+  (ERROR
+    (identifier)
+    (identifier)))
+==========================
+Take without source
+==========================
+
+take "key"
+
+---
+
+(source_file
+  (ERROR
+    (string)))
+==========================
+Strike without weapon clause
+==========================
+
+strike enemy
+
+---
+
+(source_file
+  (ERROR
+    (identifier)))
+==========================
+Spawn with dangling with keyword
+==========================
+
+spawn "Goblin" with
+
+---
+
+(source_file
+  (spawn_statement
+    (string))
+  (ERROR))

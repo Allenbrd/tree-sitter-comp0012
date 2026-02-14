@@ -1,0 +1,57 @@
+==========================
+Quest without name
+==========================
+
+quest { }
+
+---
+
+(source_file
+  (ERROR)
+  (block))
+==========================
+Quest without body
+==========================
+
+quest "Q"
+
+---
+
+(source_file
+  (ERROR
+    (string)))
+==========================
+Quest with unclosed brace
+==========================
+
+quest "Q" {
+
+---
+
+(source_file
+  (ERROR
+    (string)))
+==========================
+Phase without name inside quest
+==========================
+
+quest "Q" { phase { } }
+
+---
+
+(source_file
+  (quest_declaration
+    (string)
+    (ERROR)
+    (block)))
+==========================
+Encounter without body
+==========================
+
+encounter "E"
+
+---
+
+(source_file
+  (ERROR
+    (string)))

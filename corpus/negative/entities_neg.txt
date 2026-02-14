@@ -1,0 +1,80 @@
+==========================
+Hero without name string
+==========================
+
+hero { hp: 100 }
+
+---
+
+(source_file
+  (ERROR)
+  (block
+    (identifier)
+    (ERROR)
+    (num)))
+==========================
+Hero without opening brace
+==========================
+
+hero "Bob"
+
+---
+
+(source_file
+  (ERROR
+    (string)))
+==========================
+Stat entry missing colon
+==========================
+
+hero "Bob" { hp 100 }
+
+---
+
+(source_file
+  (hero_declaration
+    (string)
+    (ERROR
+      (identifier)
+      (num))))
+==========================
+Stat entry missing value
+==========================
+
+hero "Bob" { hp: }
+
+---
+
+(source_file
+  (hero_declaration
+    (string)
+    (stat_block
+      (stat_entry
+        (identifier)
+        (MISSING identifier)))))
+==========================
+Enemy without name
+==========================
+
+enemy { hp: 10 }
+
+---
+
+(source_file
+  (ERROR)
+  (block
+    (identifier)
+    (ERROR)
+    (num)))
+==========================
+Item with unclosed brace
+==========================
+
+item "x" {
+
+---
+
+(source_file
+  (item_declaration
+    (string)
+    (MISSING "}")))

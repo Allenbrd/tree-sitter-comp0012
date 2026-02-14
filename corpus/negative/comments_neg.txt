@@ -1,0 +1,28 @@
+==========================
+Unclosed block comment
+==========================
+
+/* this never closes
+
+---
+
+(source_file
+  (ERROR)
+  (identifier)
+  (identifier)
+  (identifier))
+==========================
+Block comment after valid code still unclosed
+==========================
+
+// this is fine
+/* but this is not
+
+---
+
+(source_file
+  (comment)
+  (ERROR
+    (identifier)
+    (identifier)
+    (identifier)))
